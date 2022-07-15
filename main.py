@@ -12,7 +12,7 @@ command = input("Audio only? [y/n]: ")
 
 if command == 'y':
     audio = yt.streams.filter(only_audio=True).first()
-    file = audio.download("/Users/zunayed/Desktop/Projects/Python-Projects/YouTube-Downloader/Downloaded Audios/")
+    file = audio.download("/Downloaded Audios/")
     base, ext = os.path.splitext(file)
     new_file = base + '.mp3'
     os.rename(file, new_file)
@@ -22,8 +22,9 @@ else:
     res = input("Resolution? [best/1080/720/480/360]: ")
     if res == "best":
             video = yt.streams.get_highest_resolution()
-            video.download("/Users/zunayed/Desktop/Projects/Python-Projects/YouTube-Downloader/Downloaded Videos/")
-    video = yt.streams.get_by_resolution(res + 'p')
-    video.download("/Users/zunayed/Desktop/Projects/Python-Projects/YouTube-Downloader/Downloaded Videos/")
+            video.download("/Downloaded Videos/")
+    else:
+        video = yt.streams.get_by_resolution(res + 'p')
+        video.download("/Downloaded Videos/")
     print("Done")
 
